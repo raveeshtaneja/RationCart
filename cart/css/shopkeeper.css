@@ -1,0 +1,17 @@
+h1
+{
+	position:absolute;
+	transform-origin: 212px 43px 0px;
+    height: 43px;
+    width: 212px;
+    left: 186.114px;
+}
+
+img
+{
+      position: absolute;
+      width: 425px;
+      height: 296px;
+      left: 519px;
+      top: 77px;
+  }

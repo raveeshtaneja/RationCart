@@ -1,8 +1,8 @@
 <?php
     require_once 'library.php';
-    /*if(chkLogin()){
+    if(chkLogin()){
         header("Location: home.php");
-    }*/
+    }
 ?>
 <!DOCTYPE html>
 <html >
@@ -29,7 +29,7 @@
         <li class="tab active"><a href="#signup">Sign Up As Customer</a></li>
         <li class="tab"><a href="#login">Log In As Customer</a></li>
         <!-- <li class="tab"><a href="#signupS">Sign Up As Shopkeeper</a></li>
-        <li class="tab"><a href="#loginS">Log In As Shopkeeper</a></li> -->
+        <li class="tab"><a href="#loginS">Log In As Shopkeeper</a></li>  -->
       </ul>
       
       <div class="tab-content">
@@ -88,39 +88,47 @@
         </div>
         
         
-        <!--  <div id="signupS">   
+          <!-- <div id="signupS">   
           <h1>Sign Up </h1>
           
-          <form action="/" method="post">
+          <form action="register_action1.php" method="post">
           
-          <div class="top-row">
+         
+            <div class="field-wrap">
+              <label>
+                Shop ID<span class="req">*</span>
+              </label>
+              <input type="text" required name='shopid' autocomplete="off" />
+            </div>
+     
             <div class="field-wrap">
               <label>
                 Shop Name<span class="req">*</span>
               </label>
-              <input type="text" required autocomplete="off" />
+              <input type="text" required name='shopname' autocomplete="off" />
             </div>
         
             <div class="field-wrap">
               <label>
                 Shop Address<span class="req">*</span>
               </label>
-              <input type="text"required autocomplete="off"/>
+              <input type="text" required name='shopadd' autocomplete="off"/>
             </div>
-          </div>
+          
           
           <div class="field-wrap">
             <label>
               Set A Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password" required name='pass' autocomplete="off"/>
           </div>
           
-          <button type="submit" class="button button-block"/>Generate Shop Id</button>
+         <!--  <button type="submit" class="button button-block" name='regshop'>Generate Shop Id</button> -->
+         <!--<button type="submit" class="button button-block" name='regshop'>Sign up</button>
           
           </form> 
 
-        </div>-->
+        </div>  -->
         
         <div id="login">   
           <h1>Welcome Back!</h1>
@@ -141,7 +149,7 @@
             <input type="password" required name='pass' autocomplete="off"/>
           </div>
           
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          <!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
           
           <button type="submit" name="login" class="button button-block">Log In</button>
           
@@ -149,33 +157,33 @@
 
         </div>
         
-        <!-- <div id="loginS">   
+          <!-- <div id="loginS">   
           <h1>Welcome Back!</h1>
           
-          <form action="/" method="post">
+          <form action="login_action1.php" method="post">
           
             <div class="field-wrap">
             <label>
               Shop Id<span class="req">*</span>
             </label>
-            <input type="text"required autocomplete="off"/>
+            <input type="text" required name='shopid' autocomplete="off"/>
           </div>
           
           <div class="field-wrap">
             <label>
               Password<span class="req">*</span>
             </label>
-            <input type="password"required autocomplete="off"/>
+            <input type="password" required name='pass' autocomplete="off"/>
           </div>
           
-          <p class="forgot"><a href="#">Forgot Password?</a></p>
+          <!-- <p class="forgot"><a href="#">Forgot Password?</a></p> -->
           
-          <button class="button button-block"/>Log In</button>
+          <!--<button class="button button-block">Log In As a shopkeer</button>
           
-          </form>
+          </form> 
 
-        </div>
- -->
+        </div> -->
+ 
         
       </div><!-- tab-content -->
       

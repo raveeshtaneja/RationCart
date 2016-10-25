@@ -24,9 +24,9 @@ body {
 }
 /* Header */
 #header {
-	background: #F6F6F6;
-	background: -webkit-linear-gradient( #f6f6f6, white);
-	background: linear-gradient( #f6f6f6, white);
+	background: #edf7f6;
+	background: -webkit-linear-gradient( #edf7f6, white);
+	background: linear-gradient( #edf7f6, white);
 	clear: both;
 	border-top: 5px solid #EDEDED;
 	min-height: 100px;

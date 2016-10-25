@@ -1,4 +1,8 @@
-
+<?php
+  session_start(); // must be before any output
+  $uname = $_SESSION['uname']; // or whatever you called it
+  // check that $username is valid here (safe to display)
+?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -137,7 +141,7 @@
 				<div class="container">
 					<div class="logo">
 						<!-- <a href="index.html"> -->
-							<img alt="Ration cart" width="111" height="54" data-sticky-width="82" data-sticky-height="40" src="img/ration_logo.png">
+							<img alt="Ration cart" width="111" height="90" data-sticky-width="82" data-sticky-height="50" src="img/ration_logo.png">
 						<!-- </a> -->
 					</div>
 					<button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
@@ -181,16 +185,16 @@
 									</ul>
 								</li>
 								<li>
-									<a  href="#projects">Search for shops	</a>
+									<a  href="shop.php">Enter shop</a>
 								</li>
 								<!-- <li>
 									<a data-hash href="#features">Features</a>
 								</li> -->
 								<li>
-									<a  href="#team">Meet the Team</a>
+									<a  href="#team">Price list</a>
 								</li>
 								<li class="dropdown">
-									<a  href="#">Welcome customer
+									<a  href="#">Welcome <?=$uname ?>
 									<i class="fa fa-angle-down"></i>
 									</a>
 									<ul class="dropdown-menu">
@@ -213,7 +217,7 @@
 					</div>
 			</div>	<br><hr><br><br>
 		</div>
-		<div class="container">
+		<div class="container" id="slider">
 			<div id="owl-demo" class="owl-carousel owl-theme">
 	 		</div>
 		</div>
@@ -224,11 +228,15 @@
  $(document).ready(function() {
  
   $("#owl-demo").owlCarousel({
-    jsonPath : "json/data.json" ,
+    jsonPath : "json/data1.json" ,
     autoPlay : 2000
   });
  
 });
+
+/*$('#owl-demo').click(function(){
+   window.location.href='index.php';
+})*/
 </script>
 <script>
       // This example requires the Places library. Include the libraries=places
@@ -251,14 +259,14 @@
 				
 				map = new google.maps.Map(document.getElementById('map'), {
 				center: pos,
-				zoom: 10
+				zoom: 12
 				});
 				
 				var service = new google.maps.places.PlacesService(map);
 				service.nearbySearch({
 				location: pos,
-				radius: 5000,
-				type: ['restaurant']
+				radius: 15000,
+				type: ['grocery_or_supermarket']
 				}, callback);
 				
 	          }, function() {

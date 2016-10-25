@@ -1,0 +1,83 @@
+body {
+    padding-top: 25px; 
+}
+
+.container1
+{
+    padding-left: 135px;
+    padding-right: 135px;
+}
+
+.slide-image {
+    width: 100%;
+}
+
+.carousel-holder {
+    margin-bottom: 30px;
+}
+
+.carousel-control,
+.item {
+    border-radius: 4px;
+}
+
+.caption {
+    height: 130px;
+    overflow: hidden;
+}
+
+.caption h4 {
+    white-space: nowrap;
+}
+
+.thumbnail img {
+    width: 100%;
+    height:150px;
+    width:260px;
+}
+
+.thumbnail {
+    padding: 0;
+    height:100%;
+    width:100%;
+}
+}
+
+.thumbnail .caption-full {
+    padding: 0px;
+    color: #333;
+}
+
+footer {
+    margin: 50px 0;
+}
+.style_prevu_kit 
+{
+    display:block;
+    border:0;
+    position: relative;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1); 
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1); 
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1);
+    transition: all 200ms ease-in;
+    transform: scale(1);
+}
+
+.style_prevu_kit:hover 
+{   
+    opacity: 1;
+
+    box-shadow: 0px 0px 100px #000000;
+    z-index: 2;
+    -webkit-transition: all 200ms ease-in;
+    -webkit-transform: scale(1.06);
+    -ms-transition: all 200ms ease-in;
+    -ms-transform: scale(1.06);   
+    -moz-transition: all 200ms ease-in;
+    -moz-transform: scale(1.06);
+    transition: all 200ms ease-in;
+    transform: scale(1.06);
+}

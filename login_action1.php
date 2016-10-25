@@ -2,9 +2,9 @@
 <?php require_once 'library.php'; ?>
 <?php
     
-   /* if(chkLogin()){
+    if(chkLogin()){
         header("Location: index_customer.php");
-    }*/
+    }
 ?>
 <?php
 
@@ -26,15 +26,15 @@
                 $pass = $query["Password"];
                 /*if(password_verify($upass,$pass))*/
                 if($pass==$upass){
-                    /*$var = setsession($email);*/
+                    $var = setsession($email);
 //                    echo"<pre>";   
-//                    print_r($_SESSION);                   
+//                 echo($_SESSION);                   
                     header("Location: index_customer.php");
                 
                 }
                 else{
-                    echo $pass;
-                    echo $upass;
+                    /*echo $pass;
+                    echo $upass;*/
                     echo "You have entered a wrong password";
                     echo "<br>";
                     echo "Either <a href='login1.php'>Register</a> with the new Email ID or <a href='login1.php'>Login</a> with an already registered ID";

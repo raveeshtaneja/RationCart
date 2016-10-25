@@ -1,5 +1,6 @@
 <?php
-     
+     session_start();
+     $_SESSION["userLoggedIn"] = 0;
     function register($document){
         global $collection;
         $collection->insert($document);
@@ -17,11 +18,21 @@
         }
     }
 
+ /*   function chkeshopid($shopid){
+        global $collection;
+        $temp = $collection->findOne(array('shopid'=> $shopid));
+        if(empty($temp)){
+        return true;
+        }
+        else{
+            return false;
+        }
+    }*/
 
-   /*function setsession($email){
+   function setsession($email){
      
        
-        session_start();
+        //session_start();
 
         $_SESSION["userLoggedIn"] = 1;
         global $collection;
@@ -31,6 +42,8 @@
         return true;
         
     }
+
+
     function chkLogin(){
         
         //var_dump($_SESSION);
@@ -47,6 +60,6 @@
         unset($_SESSION["uname"]);
         unset($_SESSION["email"]);
         return true;
-    }*/
+    }
     
 ?>

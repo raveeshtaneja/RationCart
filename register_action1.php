@@ -2,9 +2,9 @@
 <?php require_once 'library.php'; ?>
 <?php
     
-   /* if(chkLogin()){
+    if(chkLogin()){
         header("Location: index_customer.php");
-    }*/
+    }
 ?>
 <?php
 
@@ -31,7 +31,7 @@ if(isset($_POST['reg'])){
         if($query){
             register($arrays);
             header("Location: index_customer.php");
-            /*$var = setsession($email);
+            $var = setsession($email);
 //                    echo"<pre>";   
 //                    print_r($_SESSION);
                   
@@ -42,7 +42,7 @@ if(isset($_POST['reg'])){
                     }
                     else{
                         echo "Some error";
-                    }*/
+                    }
             
         }
    else{
