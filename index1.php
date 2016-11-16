@@ -117,8 +117,49 @@
   -moz-border-radius: 3px;
   border-radius: 3px;
   text-align: center;
+
 }
 </style>
+
+
+
+<style>
+.button {
+    background-color: #4cafaf; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.button1 {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.button2:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,255,255,0.4);
+}
+</style>
+
+<script>
+
+	if (window.confirm('Please install CORS extension in CHROME . Click OK to install ')) 
+{
+window.location.href='https://chrome.google.com/webstore/detail/cors/dboaklophljenpcjkbbibpkbpbobnbld?utm_source=chrome-ntp-icon';
+};
+	
+	
+
+</script>
+
+
 
 <script>
 	
@@ -132,7 +173,7 @@ longitude = position.coords.longitude;
 $.ajax({
   dataType: 'json',
   type: 'GET',
-  url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+latitude+','+longitude+'&rankby=distance&type=restaurant&key=AIzaSyBl6sF6nP8wXzmjiQl1GOPyXi4d1lVWcfI',
+  url: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json?location='+latitude+','+longitude+'&rankby=distance&type=grocery_or_supermarket&key=AIzaSyBl6sF6nP8wXzmjiQl1GOPyXi4d1lVWcfI',
    success: function(data) {
             //$("body").append(JSON.stringify(data));
 
@@ -147,12 +188,20 @@ $.ajax({
 			
 			var str='';
 			var str1='';
+			var str_shop='';
+			var str_shop1='';
+			var truncstr;
 			$.each(data.results,function(i,data)
 			{
 				name.push(data.name);
 				//console.log(name);
+				id.push(data.id);
+				truncstr=data.id;
+				truncstr=truncstr.substring(0,5);
 				str+='{"item" :"<span class=';
-				str+="'item'><a href='#''><h1>";
+				str+="'item'><a href='shop.php?id=";
+				str+=truncstr;
+				str+="'><h1>";
 				str+=data.name;
 				str+='</h1><h2>';
 				lat.push(data.geometry.location.lat);
@@ -167,11 +216,24 @@ $.ajax({
 				//console.log(id[i]);
 				
 				place_id.push(data.place_id);
-				//console.log(place_id[i]);
 				
+				str+='id=';
+				//truncstr=data.id;
+				//truncstr=truncstr.substring(0,5);
+				str+=truncstr;
+				str+='</h2><h2>'
 				vicinity.push(data.vicinity);
 				str+=data.vicinity ;
 				str+='</h2></a></span>"},';
+
+
+				str_shop+='{ "id" : "';
+				str_shop+=truncstr;
+				str_shop+='","name": "';
+				str_shop+=data.name;
+				str_shop+='","add": "';
+				str_shop+=data.vicinity;
+				str_shop+='"}';
 
 
 								
@@ -181,13 +243,24 @@ $.ajax({
 			
 			str1='{"owl" : ['+str;
 			str1+='{"item" :"<span class=';
-				str1+="'item'><h1>";
-				str1+='</h1><h2>';
-				str1+='</h2></span>"}'+']}';
+			str1+="'item'><h1>";
+			str1+='</h1><h2>';
+			str1+='</h2></span>"}'+']}';
+
+			str_shop1+="{";
+			str_shop1+=str_shop;
+			str_shop1+="}";
+
+
+				//str_shop+='{}';
 				
 			$(document).ready(function() {
 				 $("#data").val(str1);
+			
+				 $("#data1").val(str_shop1);
 			})
+			
+
 			
 			//document.getElementById('owl-demo').innerHTML+=str;
 			/*$(document).ready(function() {
@@ -318,7 +391,7 @@ $.ajax({
 							<i class="fa fa-angle-down"></i>
 							</a>
 							<ul class="dropdown-menu">
-								<li><a href="../loginmongo/login1.php">As a Customer</a></li>
+								<li><a href="javascript:{}" onclick="document.getElementById('showshop').submit();">As a Customer</a></li>
 								<li><a href="../loginmongo/login2.php">As a shopkeeper</a></li>
 							</ul>	
 						</li>
@@ -335,22 +408,27 @@ $.ajax({
 				<!-- <input id="pac-input" class="controls" type="text" placeholder="Search Box"> -->
 				<div id="map"></div>
 			</div>
-	</div>	<br><hr>
+	</div>	<br><hr><br><br>
 </div>
-<div class="container" id='slider'>
-<br><br>
+<!-- <div class="container" id='slider'>
 	<div id="owl-demo" class="owl-carousel owl-theme">
 		</div>
+</div> -->
+
+<div id='slider'>
+<br><br>
+<form action="data.php" method="post" id="showshop">
+<input type="text" name="data" id='data' hidden>
+<input type="text" name="data1" id="data1" hidden>
+<center>
+<button type="submit" name="showshop" class="button button2">See Shops Nearby</button></center>
+</form>
+<br><br>
 </div>
 
 
-<br><br><br><br>
-<!-- <form action="data.php" method="post">
-<input type="text" name="data" id='data' hidden>
-<center><button  type="submit" name="showshop">Show Shops</button></center>
-</form> -->
 
-<script>
+<!-- <script>
  $(document).ready(function() {
  
   $("#owl-demo").owlCarousel({
@@ -359,7 +437,7 @@ $.ajax({
   });
  
 });
-</script>
+</script> -->
 
 <script>
       // This example requires the Places library. Include the libraries=places
@@ -388,8 +466,8 @@ $.ajax({
 				var service = new google.maps.places.PlacesService(map);
 				service.nearbySearch({
 				location: pos,
-				radius: 5000,
-				type: ['restaurant']
+				radius: 15000,
+				type: ['grocery_or_supermarket']
 				}, callback);
 				
 	          }, function() {

@@ -1,11 +1,13 @@
 <?php
      session_start();
      $_SESSION["userLoggedIn"] = 0;
+
     function register($document){
         global $collection;
         $collection->insert($document);
         return true;
     }
+    
     
     function chkemail($email){
         global $collection;
@@ -18,16 +20,16 @@
         }
     }
 
- /*   function chkeshopid($shopid){
+   function chkshopid($shopid){
         global $collection;
-        $temp = $collection->findOne(array('shopid'=> $shopid));
+        $temp = $collection->findOne(array('id'=> $shopid));
         if(empty($temp)){
         return true;
         }
         else{
             return false;
         }
-    }*/
+    }
 
    function setsession($email){
      

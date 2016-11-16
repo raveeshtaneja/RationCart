@@ -1,5 +1,5 @@
 <?php
-     //session_start();
+     session_start();
      $_SESSION["userLoggedIn"] = 0;
     function register($document){
         global $collection;
@@ -20,7 +20,7 @@
 
     function chkshopid($shopid){
         global $collection;
-        $temp = $collection->findOne(array('shopid'=> $shopid));
+        $temp = $collection->findOne(array('id'=> $shopid));
         if(empty($temp)){
         return true;
         }
@@ -50,10 +50,10 @@
 
         $_SESSION["userLoggedIn"] = 1;
         global $collection;
-        $temp = $collection->findOne(array('shopid'=> $shopid));
-        $_SESSION["shopname"] = $temp["shopname"];
+        $temp = $collection->findOne(array('id'=> $shopid));
+        $_SESSION["shopname"] = $temp["name"];
         $_SESSION["shopid"] = $shopid;
-        $_SESSION["shopadd"]=$temp["shopadd"];
+        $_SESSION["shopadd"]=$temp["add"];
         return true;
         
     }

@@ -5,6 +5,7 @@
   $shopadd=$_SESSION["shopadd"];
   // check that $username is valid here (safe to display)
 ?>
+<?php require_once '../connection_shopkeeper.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,12 +54,12 @@
  <li><a href="../index.php"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Log Out</a></li>
  </ul>
  <form class="navbar-form navbar-right" action="#" method="GET">
- <div class="input-group">
+ <!-- <div class="input-group">
  <input type="text" class="form-control" placeholder="Search..." id="query" name="search" value="">
  <div class="input-group-btn">
  <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-search"></span></button>
  </div>
- </div>
+ </div> -->
  </form>
  </div>
  </div>
@@ -66,11 +67,12 @@
  <style type="text/css">
   body
   {
-  background: url(image/body2.jpg) repeat 0 0;
-}
+  background: url(image/body-bg1.jpg) repeat 0 0;
+  /*background:#ADD8E6;*/
+  }
 .well-small
 {
-	background: #ECEDF2;
+	background: #ADD8E6;
 	/*background: #DFD7D0;*/
 	/*background: #D9DEDF;*/
 }
@@ -91,16 +93,14 @@
  </li>
 
  <li>
- <a href="Quantity left.html"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Quantity Left</a>
+ <a href="Quantityleft.php"><span class="glyphicon glyphicon-tasks" aria-hidden="true"></span> Quantity Left</a>
  </li>
  <li>   
- <a href="order.html"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Order</a>
+ <a href="order.php"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Order</a>
  </li>
+
  <li>
- <a href="Sales.html"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span> Sales</a>
- </li>
- <li>
- <a href="Account.html"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Manage Account</a>
+ <a href="Account.php"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Manage Account</a>
  </li>
  </ul>
  </div>

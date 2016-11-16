@@ -7,8 +7,12 @@
     }
 ?>
 <?php
+// Turn off all error reporting
+error_reporting(0);
+?>
+<?php
 
-    if(isset($_POST['shoplogin'])){
+    /*if(isset($_POST['shoplogin'])){
 //        print_r($_POST);
       
         
@@ -24,7 +28,7 @@
         else{
             
                 $pass = $query["shoppass"];
-                /*if(password_verify($upass,$pass))*/
+                
                 if($pass==$shoppass){
                     $var = setsession1($shopid);
 //                    echo"<pre>";   
@@ -33,8 +37,7 @@
                 
                 }
                 else{
-                    /*echo $pass;
-                    echo $upass;*/
+                    
                     echo "You have entered a wrong password";
                     echo "<br>";
                     echo "Either <a href='login2.php'>Register</a> with the new Email ID or <a href='login2.php'>Login</a> with an already registered ID";
@@ -45,5 +48,36 @@
         }
     }
     
-
+*/
+if(isset($_POST['shoplogin'])){
+    $id=$_POST['shopid'];
+    $pass=$_POST['shoppass'];
+    $criteria = array("id"=> $id);
+    $query = $collection->findOne($criteria);
+    if(empty($query)){
+        echo "Shop ID is not registered.";
+        echo "Either <a href='login2.php'>Register</a> with the new Email ID or <a href='login2.php'>Login</a> with an already registered ID";
+    }
+    else{
+        
+            $shoppass = $query["pass"];
+            
+            if($pass==$shoppass){
+                $var = setsession1($id);
+//                    echo"<pre>";   
+//                 echo($_SESSION);                   
+                header("Location: cart/profile.php");
+            
+            }
+            else{
+                
+                echo "You have entered a wrong password";
+                echo "<br>";
+                echo "Either <a href='login2.php'>Register</a> with the new Email ID or <a href='login2.php'>Login</a> with an already registered ID";
+            }
+            
+        
+    
+    }
+}
 ?>

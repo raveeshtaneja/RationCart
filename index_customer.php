@@ -18,7 +18,7 @@
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
 		<!-- Web Fonts  -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
 
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/bootstrap.css">
@@ -115,6 +115,7 @@
   background: #d5e8f2;
   padding: 30px 0px;
   display: block;
+  height:530px;
   margin: 5px;
   color: #FFF;
   -webkit-border-radius: 3px;
@@ -184,15 +185,15 @@
 										<li><a href="#">Hindi</a></li>
 									</ul>
 								</li>
-								<li>
+								<!-- <li>
 									<a  href="shop.php">Enter shop</a>
-								</li>
+								</li> -->
 								<!-- <li>
 									<a data-hash href="#features">Features</a>
 								</li> -->
 								<li>
-									<a  href="#team">Price list</a>
-								</li>
+							<a  href="aboutus/aboutus.html">About Us</a>
+						</li>
 								<li class="dropdown">
 									<a  href="#">Welcome <?=$uname ?>
 									<i class="fa fa-angle-down"></i>

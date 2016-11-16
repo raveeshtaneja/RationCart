@@ -14,7 +14,7 @@
 		<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
 		<!-- Web Fonts  -->
-		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
 
 		<!-- Vendor CSS -->
 		<link rel="stylesheet" href="vendor/bootstrap/bootstrap.css">
@@ -117,6 +117,7 @@
   -moz-border-radius: 3px;
   border-radius: 3px;
   text-align: center;
+
 }
 </style>
 
@@ -187,12 +188,20 @@ $.ajax({
 			
 			var str='';
 			var str1='';
+			var str_shop='';
+			var str_shop1='';
+			var truncstr;
 			$.each(data.results,function(i,data)
 			{
 				name.push(data.name);
 				//console.log(name);
+				id.push(data.id);
+				truncstr=data.id;
+				truncstr=truncstr.substring(0,5);
 				str+='{"item" :"<span class=';
-				str+="'item'><a href='shop.php'><h1>";
+				str+="'item'><a href='shop.php?id=";
+				str+=truncstr;
+				str+="'><h1>";
 				str+=data.name;
 				str+='</h1><h2>';
 				lat.push(data.geometry.location.lat);
@@ -207,26 +216,50 @@ $.ajax({
 				//console.log(id[i]);
 				
 				place_id.push(data.place_id);
-				//console.log(place_id[i]);
 				
+				str+='id=';
+				//truncstr=data.id;
+				//truncstr=truncstr.substring(0,5);
+				str+=truncstr;
+				str+='</h2><h2>'
 				vicinity.push(data.vicinity);
 				str+=data.vicinity ;
 				str+='</h2></a></span>"},';
 
 
+				/*str_shop+='{ "id" : "';
+				str_shop+=truncstr;
+				str_shop+='","name": "';
+				str_shop+=data.name;
+				str_shop+='","add": "';
+				str_shop+=data.vicinity;
+				str_shop+='"}';*/
+				str_shop+=truncstr;
+				str_shop+=';';
+				str_shop+=data.name;
+				str_shop+=';';
+				str_shop+=data.vicinity;
+				str_shop+=';]';
 								
-				
-				
 			});
 			
 			str1='{"owl" : ['+str;
 			str1+='{"item" :"<span class=';
-				str1+="'item'><h1>";
-				str1+='</h1><h2>';
-				str1+='</h2></span>"}'+']}';
+			str1+="'item'><h1>";
+			str1+='</h1><h2>';
+			str1+='</h2></span>"}'+']}';
+
+			//str_shop1+="{";
+			str_shop1+=str_shop;
+			//str_shop1+="}";*/
+
+
+				//str_shop+='{}';
 				
 			$(document).ready(function() {
 				 $("#data").val(str1);
+			
+				 $("#data1").val(str_shop1);
 			})
 			
 
@@ -353,7 +386,7 @@ $.ajax({
 							<a data-hash href="#features">Features</a>
 						</li> -->
 						<li>
-							<a  href="#team">Price list</a>
+							<a  href="aboutus/aboutus.html">About Us</a>
 						</li>
 						<li class="dropdown">
 							<a  href="#">Login/Register
@@ -388,6 +421,7 @@ $.ajax({
 <br><br>
 <form action="data.php" method="post" id="showshop">
 <input type="text" name="data" id='data' hidden>
+<input type="text" name="data1" id="data1" hidden>
 <center>
 <button type="submit" name="showshop" class="button button2">See Shops Nearby</button></center>
 </form>

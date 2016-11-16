@@ -4,6 +4,60 @@
         header("Location: home.php");
     }
 ?>
+<?php require_once 'connection.php'; ?>
+
+
+<?php
+$message='';
+if(isset($_POST['shopreg'])){
+    $id=$_POST['shopid'];
+    $criteria = array("id"=> $id);
+    $query = $collection->findOne($criteria);
+    $pass=$query['pass'];
+    
+    $message='your password is ';
+    $message+= $pass;
+    /*header("Location:login2.php");
+    footer("echo 'your password is $pass'");*/
+}
+?>
+
+
+<?php
+$message1='';
+if(isset($_POST['shoplogin'])){
+    $id=$_POST['shopid'];
+    $pass=$_POST['shoppass'];
+    $criteria = array("id"=> $id);
+    $query = $collection->findOne($criteria);
+    if(empty($query)){
+        $message1= "Shop ID is not registered.";
+        //echo "Either <a href='login2.php'>Register</a> with the new Email ID or <a href='login2.php'>Login</a> with an already registered ID";
+    }
+    else{
+        
+            $shoppass = $query["pass"];
+            
+            if($pass==$shoppass){
+                $var = setsession1($id);
+//                    echo"<pre>";   
+//                 echo($_SESSION);                   
+                header("Location: cart/profile.php");
+            
+            }
+            else{
+                
+                $message1="You have entered a wrong password";
+                //echo "<br>";
+                //echo "Either <a href='login2.php'>Register</a> with the new Email ID or <a href='login2.php'>Login</a> with an already registered ID";
+            }
+            
+        
+    
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html >
   <head>
@@ -22,7 +76,12 @@
   </head>
 
   <body>
-
+  <div data-role="header" data-position="fixed">
+  
+  <h2 align='right'><a href='index.php'>Back to Home</a></h2>
+  
+  </div>
+  <center><p><?php echo $message; echo $message1;?></p></center>
     <div class="form">
       
       <ul class="tab-group">
@@ -38,9 +97,9 @@
         
         
           <div id="signupS">   
-          <h1>Sign Up </h1>
+          <h1>See password </h1>
           
-          <form action="register_action2.php" method="post">
+          <form action="" method="post">
           
          
             <div class="field-wrap">
@@ -50,7 +109,7 @@
               <input type="text" required name='shopid' autocomplete="off" />
             </div>
      
-            <div class="field-wrap">
+            <!-- <div class="field-wrap">
               <label>
                 Shop Name<span class="req">*</span>
               </label>
@@ -70,10 +129,10 @@
               Set A Password<span class="req">*</span>
             </label>
             <input type="password" required name='shoppass' autocomplete="off"/>
-          </div>
+          </div> -->
           
          <!--  <button type="submit" class="button button-block" name='regshop'>Generate Shop Id</button> -->
-         <button type="submit" class="button button-block" name='shopreg'>Sign up</button>
+         <button type="submit" class="button button-block" name='shopreg'>Generate Password</button>
           
           </form> 
 
@@ -84,7 +143,7 @@
           <div id="loginS">   
           <h1>Welcome Back!</h1>
           
-          <form action="login_action2.php" method="post">
+          <form action="" method="post">
           
             <div class="field-wrap">
             <label>

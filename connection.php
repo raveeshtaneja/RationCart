@@ -11,5 +11,5 @@
     catch (Exception $e){
         die("Error. Couldn't connect to the server. Please Check");
     }
-       session_start();
+       //session_start();
 ?>

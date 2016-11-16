@@ -7,6 +7,10 @@
     }
 ?>
 <?php
+// Turn off all error reporting
+error_reporting(0);
+?>
+<?php
 
 if(isset($_POST['reg'])){
        
