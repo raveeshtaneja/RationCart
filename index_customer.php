@@ -54,6 +54,17 @@
  <script src="vendor/jquery/jquery.js"></script>
 
 <script src="owl-carousel/owl.carousel.js"></script>
+<script src="http://www.microsoftTranslator.com/ajax/v3/WidgetV3.ashx?siteData=ueOIGRSKkd965FeEGM5JtQ**" type="text/javascript"></script>
+<script type="text/javascript">
+        
+        document.onreadystatechange = function () {
+            if (document.readyState == 'complete') {
+                Microsoft.Translator.Widget.Translate('en', 'en', null, null, null, null, 1000);
+            }
+        }
+       
+
+</script> 
 
 		<!-- Head Libs -->
 		<script src="vendor/modernizr/modernizr.js"></script>
@@ -175,7 +186,7 @@
 								<!-- <li>
 								<a href="http://free-website-translation.com/" id="ftwtranslation_button" hreflang="en" title="" style="border:0;">translate</a> <script type="text/javascript" src="http://free-website-translation.com/scripts/fwt.js" /></script>
 								</li>-->
-								<li class="dropdown ">
+								<!-- <li class="dropdown ">
 									<a  class="dropdown-toggle" href="#">
 										Language
 										<i class="fa fa-angle-down"></i>
@@ -184,7 +195,7 @@
 										<li><a href="#">English</a></li>
 										<li><a href="#">Hindi</a></li>
 									</ul>
-								</li>
+								</li> -->
 								<!-- <li>
 									<a  href="shop.php">Enter shop</a>
 								</li> -->
